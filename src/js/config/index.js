@@ -1,6 +1,3 @@
-import development from './development';
-import production from './production';
-
 console.log(`config/${process.env.NODE_ENV}.js was loaded`);
 
 const env =
@@ -9,5 +6,7 @@ const env =
     : process.env.NODE_ENV;
 
 const envConf = require(`./${env}.js`).default;
+
+console.log(envConf);
 
 export default envConf;
