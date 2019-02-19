@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
@@ -42,7 +43,12 @@ const config = {
       },
     ],
   },
-  plugins: [new ExtractTextPlugin({ filename: 'style.css', allChunks: true })],
+  plugins: [
+    new ExtractTextPlugin({ filename: 'style.css', allChunks: true }),
+    new webpack.DefinePlugin({
+      NODE_API_URL: JSON.stringify(process.env.NODE_API_URL),
+    }),
+  ],
 };
 
 module.exports = (env, argv) => {

@@ -8,3 +8,6 @@ npm install
 ```shell
 npm start
 ```
+
+### とりあえずNetlify
+https://radicha-front.netlify.com
