@@ -8,5 +8,6 @@ const env =
 const envConf = require(`./${env}.js`).default;
 
 console.log(envConf);
+console.log(process.env.NODE_API_URL)
 
 export default envConf;
