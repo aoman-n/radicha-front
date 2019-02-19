@@ -12,7 +12,7 @@ export default ({ showModal, toggleRoombar, logoutUser, username }) => (
     <Nav>
       {username || username !== null ? (
         <Ul>
-          <Li onClick={() => showModal('direct')}>directModal</Li>
+          <Li onClick={() => showModal('direct')}>directModaldddd</Li>
           <Li onClick={() => showModal('login')}>
             使用中の名前：
             <Name>{username}</Name>

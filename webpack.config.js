@@ -1,19 +1,13 @@
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-module.exports = {
+const config = {
   context: path.join(__dirname, '/src'),
   entry: ['@babel/polyfill', path.join(__dirname, '/src/js')],
   output: {
     path: path.join(__dirname, '/public'),
     filename: 'bundle.js',
   },
-  devServer: {
-    contentBase: path.join(__dirname, '/public'),
-    historyApiFallback: true,
-    port: 5000,
-  },
-  devtool: 'eval-source-map',
   module: {
     rules: [
       {
@@ -49,4 +43,16 @@ module.exports = {
     ],
   },
   plugins: [new ExtractTextPlugin({ filename: 'style.css', allChunks: true })],
+};
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'development') {
+    config.devtool = 'eval-source-map';
+    config.devServer = {
+      contentBase: path.join(__dirname, '/public'),
+      historyApiFallback: true,
+      port: 5000,
+    };
+  }
+  return config;
 };
